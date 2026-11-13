@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Battleship</title>
+  <style>
+    body { font-family: Arial; background: #cfe0ef; padding: 20px; }
+    .result { background: white; padding: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Battleship!!</h1>
+
+  <button onclick="startGame()">Init Battle</button>
+  <div class="result" id="status"></div>
+
+  <hr>
+
+  <p>Coordinates (x,y from 0 to 9, example: 3,8)</p>
+  <input id="coords">
+  <button onclick="fire()">Fire!</button>
+
+  <div class="result" id="log"></div>
+
+  <script>
+    async function startGame() {
+      let response = await fetch("/start", { method: "POST" });
+      let text = await response.text();
+
+      document.getElementById("status").innerHTML = text;
+      document.getElementById("log").innerHTML = "";
+    }
+
+    async function fire() {
+      let coords = document.getElementById("coords").value;  // "3,8"
+      let parts = coords.split(",");
+      let x = parts[0];
+      let y = parts[1];
+
+      let response = await fetch("/fire?x=" + x + "&y=" + y, { method: "POST" });
+      let text = await response.text();
+
+      document.getElementById("log").innerHTML += coords + ": " + text + "<br>";
+      document.getElementById("coords").value = "";
+    }
+  </script>
+</body>
+</html>

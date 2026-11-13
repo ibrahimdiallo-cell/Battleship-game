@@ -1,0 +1,7 @@
+[
+  { "Name": "Aircraft Carrier", "StartX": 0, "StartY": 0, "Size": 5, "Horizontal": true },
+  { "Name": "Battleship",       "StartX": 0, "StartY": 2, "Size": 4, "Horizontal": false },
+  { "Name": "Submarine",        "StartX": 5, "StartY": 5, "Size": 3, "Horizontal": true },
+  { "Name": "Destroyer",        "StartX": 9, "StartY": 0, "Size": 3, "Horizontal": false },
+  { "Name": "Patrol boat",      "StartX": 3, "StartY": 8, "Size": 2, "Horizontal": true }
+]
